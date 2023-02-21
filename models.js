@@ -9,6 +9,6 @@ const Coche = mongoose.model('Coche',
 );
 
 module.exports = {
-  Cliente: Cliente,
-  Coche: Coche
+  Cliente,
+  Coche
 }

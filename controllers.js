@@ -44,7 +44,7 @@ exports.createCliente = (req, res) =>
 
 
 
-// ------ ARTÍCULOS
+// ------ COCHES
 
 exports.readCoches = (req, res) =>
     Coche.find({}, (err, data) => {
