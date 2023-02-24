@@ -6,21 +6,13 @@ const mongoose   = require('mongoose');
 const apiRoutes  = require('./routes');
 
 const app    = express();
-const PORT   = process.env.PORT || 3000;
+const PORT   = process.env.PORT;
 const DB_URI = process.env.DB_URI;
 
 
 // CONEXIÓN A BASE DE DATOS
-const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = DB_URI;
-const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect(err => {
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
  mongoose.set('strictQuery',true);
- mongoose.connect(uri)
+ mongoose.connect(DB_URI)
    .then(db => console.log("Conexión a BD correcta"))
     .catch(error => console.log("Error al conectarse a la BD" + error));
 
