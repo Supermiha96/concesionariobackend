@@ -3,16 +3,13 @@
 > **ESTE MINITUTORIAL ES UNA VERSIÓN RESUMIDA DEL BACKEND DE ESTA APLICACIÓN**
 > 
 > Demo desplegada en
-> - [Fly.io](https://tiendabackend.fly.dev)
-> - [Render](https://tiendabackend.onrender.com)
-> - [Railway](https://tiendabackend.up.railway.app/)
-> - [Cyclic](https://tiendabackend.cyclic.app/)
+> - [Heroku](https://concesionariomihailbackend.herokuapp.com/)
 >
 > A tener en cuenta:
 >
 > - Mucho del código que aparece en este minitutorial está simplificado con fines didácticos.
 > - Para ver todo el código, revisar el código fuente de este repositorio.
-> - **La parte frontend de esta aplicación puede verse en [tiendafrontend](https://github.com/jamj2000/tiendafrontend)**
+> - **La parte frontend de esta aplicación puede verse en [Concesionariofrontend](https://github.com/Supermiha96/concesionariomihailfrontend)**
 
 
 ## Introducción
