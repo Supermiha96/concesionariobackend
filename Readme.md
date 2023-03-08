@@ -40,8 +40,8 @@ O, si deseamos una versión más actualizada, podemos recurrir al sitio oficial 
 Para iniciar el proyecto hacemos:
 
 ```
-mkdir  tiendabackend
-cd     tiendabackend
+mkdir  concesionariomihailbackend
+cd     concesionariomihailbackend
 
 npm  init  -y
 ```
@@ -65,10 +65,10 @@ El archivo `package.json` tendrá una apariencia semejante a la siguiente:
 
 ```
 {
-  "name": "tiendabackend",
+  "name": "concesionariomihailbackend",
   "version": "1.0.0",
   "description": "Backend of a Fullstack webapp",
-  "author": "jamj2000 at google dot com",
+  "author": "Mihail Pistol",
   "license": "GPL",
   "main": "server.js",
   "scripts": {
@@ -148,10 +148,10 @@ Si echamos un vistazo al archivo **`package.json`** veremos que dichos paquetes 
 
 ```
 {
-  "name": "tiendabackend",
+  "name": "concesionariomihailbackend",
   "version": "1.0.0",
   "description": "Backend of a Fullstack webapp",
-  "author": "jamj2000 at google dot com",
+  "author": "Mihail Pistol",
   "license": "GPL",
   "main": "server.js",
   "scripts": {
@@ -236,7 +236,7 @@ Ejemplo de contenido del archivo `.env`:
 
 ```
 PORT=3000
-DB_URI=mongodb://localhost:27017/basedatos
+DB_URI=mongodb+srv://usuario:Contraseña@cluster0.1kashml.mongodb.net/?retryWrites=true&w=majority
 ```
 
 Código a añadir al servidor web:
@@ -250,7 +250,7 @@ const DB_URI = process.env.DB_URI;
 
 Si la variable `PORT` no está definida en el archivo `.env`, entonces se utiliza el valor 3000. En nuestro caso, es mejor no definir dicha variable.
 
-La variable `DB_URI` debe estar definida en el archivo `.env` sino la conexión a la base de datos fallará. Dicha variable contiene la URL de la base de datos. Consulta más abajo, en el apartado [Base de datos](https://github.com/jamj2000/tiendabackend#base-de-datos).
+La variable `DB_URI` debe estar definida en el archivo `.env` sino la conexión a la base de datos fallará. 
 
 
 ### Conectando a una base de datos
@@ -295,11 +295,11 @@ Este backend proporpociona una **API Rest** con los siguientes **end-points**:
 (PUT)    /api/clientes/:id     (Modifica cliente :id)
 (DELETE) /api/clientes/:id     (Elimina  cliente :id)
 
-(GET)    /api/articulos        (Lista    todos los artículos)
-(POST)   /api/articulos        (Crea     artículo)
-(GET)    /api/articulos/:id    (Lista    artículo :id)
-(PUT)    /api/articulos/:id    (Modifica artículo :id)
-(DELETE) /api/articulos/:id    (Elimina  artículo :id)
+(GET)    /api/coches        (Lista    todos los coches)
+(POST)   /api/coches        (Crea     coche)
+(GET)    /api/coches/:id    (Lista    coche :id)
+(PUT)    /api/coches/:id    (Modifica coche :id)
+(DELETE) /api/coches/:id    (Elimina  coche :id)
 ```
 
 El código fuente usado es:
@@ -333,7 +333,7 @@ Todo el código fuente de las rutas está disponible en el archivo **[`routes.js
 Los controladores son los encargados de realizar las operaciones CRUD. Para ello hacen uso de los modelos definidos.
 
 ```javascript
-const { Cliente, Articulo } = require("./models.js");
+const { Cliente, Coche } = require("./models.js");
 
 exports.readClientes = (req, res) => 
     Cliente.find({}, (err, data) => {
@@ -351,7 +351,7 @@ Todo el código fuente de los controladores está disponible en el archivo **[`c
 Tenemos 2 modelos:
 
 - Cliente 
-- Artículo
+- Coche
 
 Cada uno tiene un esquema asociado que, en este caso, es bastante simple. Cada modelo tiene únicamente 2 propiedades:
 
@@ -360,7 +360,7 @@ const Cliente = mongoose.model('Cliente',
   new mongoose.Schema({ nombre: String, apellidos: String })
 );
 
-const Articulo = mongoose.model('Articulo',
+const Coche = mongoose.model('Coche',
   new mongoose.Schema({ nombre: String, precio: Number })
 );
 ```
@@ -396,15 +396,6 @@ En el archivo **`.env`** (abreviatura de *environment*) pondremos las **variable
 `DB_URI=mongodb+srv://`***`usuario`***`:`***`contraseña`***`@`***`servidor`***`/`***`basedatos`***`?retryWrites=true&w=majority`
 
 Deberemos sustituir `usuario`, `contraseña`, `servidor` y `basedatos` por los que nos sean propios.
-
-> Nota: 
->
-> Una forma más sencilla de trabajar, al menos durante el proceso de desarrollo, es utilizar una base de datos local. 
-> Aunque cuando vayamos a desplegar la aplicación en Internet deberemos recurrir a una base de datos on-line.
->
-> Si utilizamos un servidor MongoDB local, la URL tendrá la forma:
->
-> `mongodb://localhost:27017/`*basedatos*
 
 
 ## Control de versiones (Git)
@@ -522,17 +513,15 @@ En concreto, en esta aplicación debemos configurar la variable DB_URI con la UR
 
 ```bash
 heroku login -i
-heroku config:set DB_URI=mongodb+srv://...  -a tiendabackend
+heroku config:set DB_URI=mongodb+srv://...  -a concesionariomihailbackend
 ```
 
 Para ver las variables configuradas, ejecutamos:
 
 ```bash
-heroku config -a tiendabackend
+heroku config -a concesionariomihailbackend
 ```
 
 > NOTA: Si deseamos eliminar una variable, lo hacemos con
 >
-> `heroku config:unset NOMBRE_VARIABLE -a tiendabackend`
-
-> NOTA: Sustituye *tiendabackend* por el nombre de tu aplicación.
+> `heroku config:unset NOMBRE_VARIABLE -a concesionariomihailbackend`
