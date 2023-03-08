@@ -201,7 +201,7 @@ app.use(express.static(path.join(__dirname , 'public')));
 
 En [`public/index.html`](public/index.html) pondremos una página con información acerca de la API. 
 
-![Info de la API](snapshots/backend.png)
+![Info de la API](public/Index.jpg)
 
 
 ### Haciendo pública nuestra API
