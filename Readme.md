@@ -507,7 +507,7 @@ En concreto, en esta aplicación debemos configurar la variable DB_URI con la UR
 
 **Desde la interfaz web**
 
-![heroku env](public/Heroku Var.jpg)
+![heroku env](public/HerokuVar.jpg)
 
 **Desde CLI**
 
